@@ -1,0 +1,94 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                  message: 'City cannot be empty.'
+                  groups: [create, edit]
+            - Length:
+                  min: 2
+                  max: 255
+                  groups: [create, edit]
+
+        country:
+            - NotBlank:
+                  message: 'Choose country from the list.'
+                  groups: [create, edit]
+
+        latitude:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: -90
+                  max: 90
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+                  groups: [create, edit]
+
+        longitude:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: -180
+                  max: 180
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+                  groups: [create, edit]
+
+App\Entity\Forecast:
+    properties:
+        date:
+            - NotBlank:
+                  message: 'Forecast date is required.'
+                  groups: [create, edit]
+            - Type:
+                  type: \DateTimeInterface
+                  message: 'Enter valid date.'
+                  groups: [create, edit]
+
+        temperature:
+            - NotBlank:
+                  message: 'Temperature is required.'
+                  groups: [create, edit]
+            - Range:
+                  min: -60.0
+                  max: 60.0
+                  notInRangeMessage: 'Temperature must be between {{ min }}°C and {{ max }}°C.'
+                  groups: [create]
+
+        pressure:
+            - NotBlank:
+                  message: 'Pressure is required.'
+                  groups: [create, edit]
+            - Range:
+                  min: 800
+                  max: 1100
+                  notInRangeMessage: 'Pressure must be between {{ min }} and {{ max }} hPa.'
+                  groups: [create, edit]
+
+        humidity:
+            - NotBlank:
+                  message: 'Humidity is required.'
+                  groups: [create, edit]
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Humidity must be between {{ min }}% and {{ max }}%.'
+                  groups: [create, edit]
+
+        precipitation:
+            - NotBlank:
+                  message: 'Precipitation is required.'
+                  groups: [create, edit]
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Precipitation must be between {{ min }}% and {{ max }}%.'
+                  groups: [create, edit]
+
+        condition:
+            - NotBlank:
+                  message: 'Choose condition.'
+                  groups: [create, edit]
+
+        location:
+            - NotBlank:
+                  message: 'Choose location.'
+                  groups: [create, edit]
