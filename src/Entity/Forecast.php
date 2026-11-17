@@ -124,4 +124,15 @@ class Forecast
 
         return $this;
     }
+
+    public function getFahrenheit(): ?float
+    {
+        $celsius = $this->getTemperature();
+
+        if ($celsius === null) {
+            return null;
+        }
+
+        return round(($celsius * 9 / 5) + 32, 2);
+    }
 }

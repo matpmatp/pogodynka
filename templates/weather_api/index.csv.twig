@@ -1,0 +1,12 @@
+city,country,date,temperature,pressure,condition,precipitation,humidity
+{% for m in forecasts -%}
+    {{ city -}},
+    {{- country -}},
+    {{- m.date|date('Y-m-d') -}},
+    {{- m.temperature -}},
+    {{- m.Fahrenheit -}},
+    {{- m.pressure -}},
+    {{- m.condition -}},
+    {{- m.precipitation -}},
+    {{- m.humidity -}}
+{% endfor %}
